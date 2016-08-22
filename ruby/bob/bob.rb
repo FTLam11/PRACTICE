@@ -25,7 +25,7 @@ class Bob
   end
 
   def asked_question?(remark)
-    remark[-1] == '?'
+    remark.end_with?("?")
   end
 end
 
