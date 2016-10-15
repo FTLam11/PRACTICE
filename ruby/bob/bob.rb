@@ -28,5 +28,3 @@ class Bob
     remark.end_with?("?")
   end
 end
-
-# remark == remark.upcase && remark.scan(/\w+/).select { |word| word.length > 1 } != []
