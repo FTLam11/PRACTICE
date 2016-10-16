@@ -1,7 +1,6 @@
 class Squares
   def initialize(natural_num)
-    @collection = (1..natural_num).to_a
-    @collection = [0] if natural_num == 0
+    @collection = (0..natural_num).to_a
   end
 
   def square_of_sum
