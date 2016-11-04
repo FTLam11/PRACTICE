@@ -1,13 +1,11 @@
 class ETL
   def self.transform(legacy_data)
-    new_data = Hash.new
 
-    legacy_data.each do | points, chars |
-      chars.each do | char |
-        new_data[char.downcase] = points
-      end 
+    legacy_data.map do | points, chars |
+      points, chars = chars, points
     end
 
-    new_data
+    legacy_data
+
   end
 end
