@@ -1,8 +1,6 @@
 require 'byebug'
 
 class RailFenceCipher
-  attr_reader :message, :rails_count
-
   def self.encode(message, rails_count)
     rails = rails_count.times.map { |i| i = Array.new }
     indices = self.generate_indices(message, rails_count)
@@ -53,8 +51,10 @@ end
 5 rails 8 terms - 0,1,2,3,4,3,2,1
 
 2 rails
-n.odd?
 n.even?
+n.odd?
+024
+135
 
 3 rails
 04  8
