@@ -1,18 +1,20 @@
 class School
+  attr_reader :school
+
   def initialize
     @school = Hash.new { | school,grade | school[grade] = [] }
   end
 
   def grade(grade_level)
-    @school[grade_level]
+    school[grade_level]
   end
 
   def add(student, grade_level)
-    @school[grade_level] = grade(grade_level).push(student).sort!
+    school[grade_level] = grade(grade_level).push(student).sort!
   end
 
   def students_by_grade
-    @school
+    school
   end
 end
 
