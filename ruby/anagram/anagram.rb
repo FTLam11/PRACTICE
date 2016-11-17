@@ -8,6 +8,7 @@ end
 
 class Anagram
   using Stringy
+  attr_reader :word
 
   def initialize(word)
     @word = word
@@ -20,10 +21,10 @@ class Anagram
   private
 
   def same_chars?(candidate)
-    @word.normalize == candidate.normalize 
+    word.normalize == candidate.normalize 
   end
 
   def same_word?(candidate)
-    @word.casecmp(candidate) == 0
+    word.casecmp(candidate) == 0
   end
 end
