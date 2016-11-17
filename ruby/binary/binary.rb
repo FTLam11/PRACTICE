@@ -1,17 +1,13 @@
 class Binary
+  attr_reader :binary_str
+
   def initialize(binary_str)
     raise ArgumentError if invalid_chars?(binary_str)
     @binary_str = binary_str
   end
 
   def to_decimal
-    decimal_num = 0
-
-    @binary_str.reverse.chars.each_with_index do | num, index |
-      decimal_num += num.to_i * (2**index.to_i)
-    end
-    
-    decimal_num
+    binary_str.reverse.chars.each_with_index.map { | num, index | num.to_i * (2 ** index.to_i)}.inject(&:+)
   end
 
   private
