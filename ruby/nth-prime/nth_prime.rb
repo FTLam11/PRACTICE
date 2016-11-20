@@ -2,19 +2,19 @@ class Prime
   def self.nth(num)
     raise ArgumentError if num == 0
     candidate = 3
-    prime_num_arr = [2]
+    prime_nums = [2]
     
-    until prime_num_arr.length == num do
-      is_prime = true
-      
-      prime_num_arr.each do |num|
-        is_prime = false if candidate % num == 0
-        break if candidate % num == 0 
-      end
-      
-      prime_num_arr << candidate if is_prime == true
+    until prime_nums.length == num do
+      prime_nums << candidate if self.is_prime?(candidate, prime_nums)
       candidate += 1
     end
-    prime_num_arr.last
+
+    prime_nums.last
+  end
+
+  private
+
+  def self.is_prime?(candidate, prime_nums)
+    return true if prime_nums.select { |prime_num| candidate % prime_num == 0}.empty?
   end
 end
