@@ -1,20 +1,22 @@
 class Series
+  attr_reader :nums
+
   def initialize(num_str)
-    @num_str = num_str.chars.map(&:to_i)
+    @nums = num_str.chars.map(&:to_i)
   end 
 
   def slices(size)
-    raise ArgumentError if size > @num_str.length
-    
-    slice_count = @num_str.length + 1 - size
-    slices = Array.new(slice_count) { Array.new }
-    index = 0
+    raise ArgumentError if size > @nums.length
+    array_of_slices(size).each_with_index.map { |e, i| @nums[i..i + size - 1]}
+  end
 
-    slice_count.times do
-      slices[index] = @num_str[index..index + size - 1]
-      index += 1
-    end
+  private
 
-    slices
+  def slice_count(size)
+     @nums.length + 1 - size
+  end
+
+  def array_of_slices(size)
+     Array.new(slice_count(size)) { Array.new }
   end 
 end
