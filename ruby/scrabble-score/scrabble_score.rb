@@ -40,6 +40,6 @@ class Scrabble
   end
 
   def self.score(word)
-    word.upcase.chars.inject(0) { |sum, char| sum += LETTER_SCORES.fetch(char.to_sym, 0) }
+    new(word).score
   end
 end
