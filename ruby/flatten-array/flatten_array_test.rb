@@ -28,13 +28,13 @@ class FlattenArrayTest < Minitest::Test
   end
 
   def test_all_values_are_nil
-    skip
+    # skip
     fa = FlattenArray.flatten([nil, [[[nil]]], nil, [[nil, nil], nil], nil])
     assert_equal [], fa
   end
 
   def test_bookkeeping
-    skip
+    # skip
     assert_equal 1, FlattenArray::VERSION
   end
 end
