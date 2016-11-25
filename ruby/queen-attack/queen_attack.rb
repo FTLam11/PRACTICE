@@ -17,11 +17,15 @@ class Queens
   end
 
   def valid_rank?(position)
-    position.values.all? { |position| position.first > -1 && position.first < 8 }
+    position.values.all? { |position| on_board?(position) }
   end
 
   def valid_file?(position)
-    position.values.all? { |position| position.last > -1 && position.last < 8 }
+    position.values.transpose.all? { |position| on_board?(position) }
+  end
+
+  def on_board?(position)
+    position.first > -1 && position.first < 8
   end
 
   def same_rank?
@@ -43,4 +47,8 @@ class Queens
   def file_delta
     (position[:white].last - position[:black].last).abs
   end
+end
+
+module BookKeeping
+  VERSION = 2
 end
