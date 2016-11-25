@@ -1,10 +1,13 @@
 class Queens
+  attr_reader :position
+
   def initialize(position)
     raise ArgumentError unless valid_position?(position)
+    @position = position
   end
 
   def attack?
-    
+    same_rank?
   end
 
   private
@@ -19,5 +22,9 @@ class Queens
 
   def valid_file?(position)
     position.values.all? { |position| position.last > -1 && position.last < 8 }
+  end
+
+  def same_rank?
+    position[:white].first == position[:black].first
   end
 end
