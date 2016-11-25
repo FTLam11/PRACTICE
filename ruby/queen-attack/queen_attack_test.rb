@@ -13,28 +13,28 @@ class QueenTest < Minitest::Test
   end
 
   def test_queen_must_have_positive_rank
-    skip
+    # skip
     assert_raises ArgumentError do
       Queens.new white: [-2, 2]
     end
   end
 
   def test_queen_must_have_rank_on_board
-    skip
+    # skip
     assert_raises ArgumentError do
       Queens.new white: [8, 4]
     end
   end
 
   def test_queen_must_have_positive_file
-    skip
+    # skip
     assert_raises ArgumentError do
       Queens.new white: [2, -2]
     end
   end
 
   def test_queen_must_have_file_on_board
-    skip
+    # skip
     assert_raises ArgumentError do
       Queens.new white: [4, 8]
     end
