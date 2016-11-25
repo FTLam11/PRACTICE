@@ -7,7 +7,7 @@ class Queens
   end
 
   def attack?
-    same_rank?
+    same_rank? || same_file?
   end
 
   private
@@ -26,5 +26,9 @@ class Queens
 
   def same_rank?
     position[:white].first == position[:black].first
+  end
+
+  def same_file?
+    position[:white].last == position[:black].last
   end
 end
