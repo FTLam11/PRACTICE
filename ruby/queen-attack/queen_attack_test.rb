@@ -53,7 +53,7 @@ class QueenTest < Minitest::Test
   end
 
   def test_can_attack_on_same_file
-    skip
+    # skip
     queens = Queens.new white: [4, 5], black: [2, 5]
     assert queens.attack?
   end
