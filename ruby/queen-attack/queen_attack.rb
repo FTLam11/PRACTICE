@@ -7,7 +7,7 @@ class Queens
   end
 
   def attack?
-    same_rank? || same_file?
+    same_rank? || same_file? || same_diagonals?
   end
 
   private
@@ -30,5 +30,17 @@ class Queens
 
   def same_file?
     position[:white].last == position[:black].last
+  end
+
+  def same_diagonals?
+    rank_delta == file_delta
+  end
+
+  def rank_delta
+    (position[:white].first - position[:black].first).abs
+  end
+
+  def file_delta
+    (position[:white].last - position[:black].last).abs
   end
 end
