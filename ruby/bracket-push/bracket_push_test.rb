@@ -17,27 +17,27 @@ class BracketsTest < Minitest::Test
   end
 
   def test_unpaired_brackets
-    skip
+    # skip
     refute Brackets.paired?('[[')
   end
 
   def test_wrong_ordered_brackets
-    skip
+    # skip
     refute Brackets.paired?('}{')
   end
 
   def test_paired_with_whitespace
-    skip
+    # skip
     assert Brackets.paired?('{ }')
   end
 
   def test_simple_nested_brackets
-    skip
+    # skip
     assert Brackets.paired?('{[]}')
   end
 
   def test_several_paired_brackets
-    skip
+    # skip
     assert Brackets.paired?('{}[]')
   end
 
