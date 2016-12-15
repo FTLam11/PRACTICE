@@ -39,7 +39,7 @@ class Brackets
         parsed << char
       else
         return false unless parsed.include?(PAIR.fetch(char, nil))
-        parsed.delete(PAIR[char])
+        parsed.pop
       end
     end
     return false unless parsed.empty?
