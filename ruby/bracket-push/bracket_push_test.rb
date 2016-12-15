@@ -12,7 +12,7 @@ class BracketsTest < Minitest::Test
   end
 
   def test_empty_string
-    skip
+    # skip
     assert Brackets.paired?('')
   end
 
