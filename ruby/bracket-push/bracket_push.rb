@@ -49,4 +49,9 @@ class Brackets
   def self.open?(char)
     char.match(/[(\[{]/) != nil
   end
+
+end
+
+module BookKeeping
+  VERSION = 3
 end
