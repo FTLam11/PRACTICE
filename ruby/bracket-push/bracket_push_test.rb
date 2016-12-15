@@ -47,12 +47,12 @@ class BracketsTest < Minitest::Test
   end
 
   def test_unopened_closing_brackets
-    skip
+    # skip
     refute Brackets.paired?('{[)][]}')
   end
 
   def test_unpaired_and_nested_brackets
-    skip
+    # skip
     refute Brackets.paired?('([{])')
   end
 
@@ -67,7 +67,7 @@ class BracketsTest < Minitest::Test
   end
 
   def test_complex_latex_expression
-    skip
+    # skip
     str = '\left(\begin{array}{cc} \frac{1}{3} & x\\ '\
           '\mathrm{e}^{x} &... x^2 \end{array}\right)'
     assert Brackets.paired?(str)
