@@ -7,7 +7,7 @@ describe('Leap year', function() {
     expect(year.isLeap()).toBe(false);
   });
 
-  xit('is introduced every 4 years to adjust about a day', function() {
+  it('is introduced every 4 years to adjust about a day', function() {
     var year = new Year(2016);
     expect(year.isLeap()).toBe(true);
   });
