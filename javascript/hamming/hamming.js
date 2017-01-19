@@ -1,10 +1,13 @@
 class Hamming {
   constructor() {}
   compute(strandA, strandB) {
-    if (strandA === strandB) {
-      return 0;
-    } else {
+    let delta = 0;
+    for (var i = 0; i < strandA.length; i++) {
+      if (strandA[i] != strandB[i]) {
+        delta++;
+      }
     }
+    return delta;
   }
 }
 
