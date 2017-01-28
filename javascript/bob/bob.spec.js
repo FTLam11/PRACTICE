@@ -48,7 +48,7 @@ describe('Bob', function() {
     expect(result).toEqual('Sure.');
   });
 
-  xit('shouting with special characters', function() {
+  it('shouting with special characters', function() {
     var result = bob.hey('ZOMG THE %^*@#$(*^ ZOMBIES ARE COMING!!11!!1!');
     expect(result).toEqual('Whoa, chill out!');
   });
