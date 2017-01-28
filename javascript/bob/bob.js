@@ -10,7 +10,8 @@ class Bob {
     };
   }
   shouting(phrase) {
-    return phrase === phrase.toUpperCase();
+    return phrase === phrase.toUpperCase() &&
+      /[a-zA-Z]/.test(phrase);
   }
   asking(phrase) {
     return phrase[phrase.length - 1] === '?';
