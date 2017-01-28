@@ -1,13 +1,12 @@
 class DnaTranscriber {
   constructor() {}
   toRna(strand) {
-    let rnaStrand = '';
-
-    for (let i = 0; i < strand.length; i++) {
-      rnaStrand += this.transcribe(strand[i]);
-    }
-
-    return rnaStrand;
+    return strand
+      .split('')
+      .map((nucleotide) => {
+        return this.transcribe(nucleotide);
+      })
+      .join('');
   }
   transcribe(nucleotide) {
     switch (nucleotide) {
