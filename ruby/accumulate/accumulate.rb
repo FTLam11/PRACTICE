@@ -1,5 +1,7 @@
 class Array
   def accumulate
-    self.map { |element| yield(element) }
+    Array.new.tap do |arr|
+      self.each { |el| arr.push(yield(el)) }
+    end
   end
 end
