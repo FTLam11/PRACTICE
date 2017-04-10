@@ -16,8 +16,6 @@ Stack.prototype.pop = function() {
     dataArr[this.count] = '';
     this.data = dataArr.join('@@@@@');
     return last;
-  } else {
-    return undefined;
   };
 };
 

@@ -18,8 +18,6 @@ Queue.prototype.pop = function() {
     var val = this.data[--this.count];
     delete this.data[this.count];
     return val;
-  } else {
-    return undefined;
   };
 };
 
