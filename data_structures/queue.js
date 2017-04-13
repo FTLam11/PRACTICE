@@ -1,32 +1,32 @@
 var Queue =  function(capacity) {
   this.capacity = capacity || Infinity;
   this.data = {};
-  this.count = 0;
+  this.head = 0;
+  this.tail = 0;
 };
 
-Queue.prototype.push = function(val) {
-  if (this.count < this.capacity) {
-    this.data[this.count++] = val;
-    return this.count;
+Queue.prototype.enqueue = function(val) {
+  if (this.count() < this.capacity) {
+    this.data[this.tail++] = val;
+    return this.count();
   } else {
     throw new Error('Capacity reached.');
   };
 };
 
-Queue.prototype.pop = function() {
-  if (this.count > 0) {
-    var val = this.data[--this.count];
-    delete this.data[this.count];
-    return val;
-  };
+Queue.prototype.dequeue = function() {
+  var val = this.data[this.head];
+  delete this.data[this.head];
+  if (this.head < this.tail) this.head++;
+  return val;
 };
 
 Queue.prototype.peek = function() {
-  return this.data[0];
+  return this.data[this.head];
 };
 
-Queue.prototype.size = function() {
-  return this.count;
+Queue.prototype.count = function() {
+  return this.tail - this.head;
 };
 
 module.exports = Queue;
