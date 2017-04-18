@@ -48,20 +48,52 @@ BinaryTree.prototype.traverseDepthFirstPostOrder = function(cb) {
 };
 
 BinaryTree.prototype.deleteMin = function(parent) {
-  if (this.left) return this.left.deleteMin(this);
-  if (this.right) {
-    var deleted = this.data;
-    this.data = this.right.data;
-    this.left = this.right.left;
-    this.right = this.right.right;
-    return deleted;
+  if (!this.left && !this.right) {
+    if(parent) {
+      var deleted = this.data;
+      parent.left = null;
+      return deleted;
+    } else {
+      this.data = null;
+    };
+  } else if (!this.left && this.right) {
+    if (parent) {
+      var deleted = this.data;
+      parent.left = this.right;
+      return deleted;
+    } else {
+      this.data = this.right.data;
+      this.right = this.right.right;
+    };
   };
-  parent.left = null;
-  return this.data;
+  if (this.left) return this.left.deleteMin(this);
 };
 
 BinaryTree.prototype.removeNode = function(value) {
-  // body...
+  if (this.data === value) return this.delete(value, this);
+  if (this.left) this.left.removeNode(value);
+  if (this.right) this.right.removeNode(value);
+  return !this.contains(value);
+};
+
+BinaryTree.prototype.delete = function(value, parent) {
+  if (parent.data === this.data) {
+    this.data = null;
+    this.left = null;
+    this.right = null;
+    return 'Got lumberjakt';
+  };
+  var parentShip = (this.data === parent.left.data ? 'left' : 'right');
+  var childShip = (this.left ? 'left' : 'right');
+  if (!this.left && !this.right) {
+    parent[parentShip] = null;
+  } else if (this.left && !this.right || !this.left && this.right) {
+    parent[parentShip] = this[childShip];
+  } else {
+    parent[parentShip] = this.right;
+    parent[parentShip].left = this.left;
+  };
+  return true;
 };
 
 module.exports = BinaryTree;

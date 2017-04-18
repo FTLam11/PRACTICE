@@ -60,4 +60,16 @@ describe("BinaryTree", function() {
     expect(tree.deleteMin(this)).to.eql(-5);
     expect(tree.deleteMin(this)).to.eql(-3);
   });
+
+  it('deletes a specific value from itself', function() {
+    tree.insert(-7);
+    expect(tree.removeNode(6)).to.be.true;
+    expect(tree.contains(6)).to.be.false;
+    expect(tree.removeNode(-5)).to.be.true;
+    expect(tree.contains(-5)).to.be.false;
+    expect(tree.removeNode(0)).to.eql('Got lumberjakt');
+    expect(tree.data).to.be.a('null');
+    expect(tree.left).to.be.a('null');
+    expect(tree.right).to.be.a('null');
+  });
 });
