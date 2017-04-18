@@ -81,7 +81,7 @@ BinaryTree.prototype.delete = function(value, parent) {
     this.data = null;
     this.left = null;
     this.right = null;
-    return 'Got lumberjakt';
+    return true;
   };
   var parentShip = (this.data === parent.left.data ? 'left' : 'right');
   var childShip = (this.left ? 'left' : 'right');
