@@ -67,9 +67,11 @@ describe("BinaryTree", function() {
     expect(tree.contains(6)).to.be.false;
     expect(tree.removeNode(-5)).to.be.true;
     expect(tree.contains(-5)).to.be.false;
+    expect(tree.left.data).to.eql(-3);
+    expect(tree.left.left.data).to.eql(-7);
     expect(tree.removeNode(0)).to.be.true;
-    expect(tree.data).to.be.a('null');
-    expect(tree.left).to.be.a('null');
-    expect(tree.right).to.be.a('null');
+    expect(tree.data).to.be.eql(7);
+    expect(tree.left.data).to.eql(-3);
+    expect(tree.right.data).to.eql(9);
   });
 });

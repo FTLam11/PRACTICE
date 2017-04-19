@@ -69,22 +69,33 @@ BinaryTree.prototype.deleteMin = function(parent) {
   if (this.left) return this.left.deleteMin(this);
 };
 
-BinaryTree.prototype.removeNode = function(value) {
-  if (this.data === value) return this.delete(value, this);
-  if (this.left) this.left.removeNode(value);
-  if (this.right) this.right.removeNode(value);
+BinaryTree.prototype.removeNode = function(value, parent = this) {
+  // use child count?
+  if (this.data === value) return this.delete(parent);
+  if (this.left) this.left.removeNode(value, this);
+  if (this.right) this.right.removeNode(value, this);
   return !this.contains(value);
 };
 
-BinaryTree.prototype.delete = function(value, parent) {
+BinaryTree.prototype.delete = function(parent) {
   if (parent.data === this.data) {
-    this.data = null;
-    this.left = null;
-    this.right = null;
+    if (!this.left && !this.right) {
+      this.data = null;
+    };
+    if (this.left && !this.right) {
+      this.data = this.left.data;
+      this.left = this.left.left;
+      this.right = this.right.right;
+    }
+    if (this.right) this.data = this.right.min(this); 
     return true;
   };
-  var parentShip = (this.data === parent.left.data ? 'left' : 'right');
+
+  var parentShip;
+  if (parent.left && this.data === parent.left.data) parentShip = 'left';
+  else parentShip = 'right';
   var childShip = (this.left ? 'left' : 'right');
+
   if (!this.left && !this.right) {
     parent[parentShip] = null;
   } else if (this.left && !this.right || !this.left && this.right) {
@@ -94,6 +105,12 @@ BinaryTree.prototype.delete = function(value, parent) {
     parent[parentShip].left = this.left;
   };
   return true;
+};
+
+BinaryTree.prototype.min = function(parent) {
+  if (this.left) return this.left.min(this);
+  parent.left = null;
+  return this.data;
 };
 
 module.exports = BinaryTree;
