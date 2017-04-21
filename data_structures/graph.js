@@ -10,21 +10,19 @@ Graph.prototype.addVertex = function(value) {
 
 Graph.prototype.removeVertex = function(value) {
   if (this.data[value]) {
+    this.data[value].forEach(function(adjacent) {
+      var connected = this.data[adjacent];
+      var index = connected.indexOf(value);
+      connected.splice(index, 1);
+    }.bind(this));
     delete this.data[value];
-    for (var vertex in this.data) {
-      var deleteAtIndex;
-      for (var i = 0; i < this.data[vertex].length; i++) {
-        if (this.data[vertex][i] == value) deleteAtIndex = i;
-      };
-      this.data[vertex].splice(deleteAtIndex, 1);
-    };
   } else {
     return 'Vertex not found';
   };
 };
 
 Graph.prototype.contains = function(value) {
-  return Object.keys(this.data).includes(value.toString());
+  return !!this.data[value];
 };
 
 Graph.prototype.addEdge = function(value1, value2) {
