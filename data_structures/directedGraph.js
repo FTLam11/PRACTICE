@@ -4,6 +4,10 @@ var DirectedGraph = function() {
 
 DirectedGraph.prototype.addVertex = function(value) {
   this.data[value] = this.data[value] || [];
+  this.populateVertices();
+};
+
+DirectedGraph.prototype.populateVertices = function() {
   for (var i = 0; i < this.data.length; i++) {
     if (!this.data[i]) this.data[i] = [];
     for (var j = 0; j < this.data.length; j++) {
